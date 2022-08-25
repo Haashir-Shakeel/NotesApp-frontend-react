@@ -2,7 +2,11 @@ import React from 'react'
 
 export const Header = () => {
   return (
-    <h3>Header</h3>
+    <div className='app-header'>
+      <h1>
+        Note List
+      </h1>
+    </div>
   )
 }
 
