@@ -61,7 +61,7 @@ export const NotePage = () => {
       if (noteId !== 'new' && !note.body){
         console.log('DELETE WORKING')
         deleteNote()
-      }else if(noteId !== 'new' && note.body !== ''){
+      }else if(noteId !== 'new' ){
         console.log('UPDATE WORKING')
         updateNote()
       }else if(noteId === 'new' && note.body !== null){
