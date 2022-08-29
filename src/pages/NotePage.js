@@ -57,17 +57,26 @@ export const NotePage = () => {
     }
 
     const handleArrowSubmit = () => {
+      console.log(note)
       if (noteId !== 'new' && !note.body){
+        console.log('DELETE WORKING')
         deleteNote()
-      }else if(noteId !== 'new'){
+      }else if(noteId !== 'new' && note.body !== ''){
+        console.log('UPDATE WORKING')
         updateNote()
-      }else if(noteId === 'new' && note !== null){
+      }else if(noteId === 'new' && note.body !== null){
+        console.log('CREATE WORKING')
         createNote()
       }
       
       navigate('/')
     }
 
+    const handleChange = (e) => {
+      setNote((prevValue)=>{
+          return {...prevValue, 'body':e.target.value}
+      })
+    }
   return (
     <div className='note'>
       <div className='note-header'>
@@ -81,8 +90,11 @@ export const NotePage = () => {
         )}
         
       </div>
-    <textarea onChange={(e) => { setNote({...note, 'body': e.target.value})}} defaultValue={note?.body}></textarea>
+    <textarea onChange={handleChange} value={note?.body}></textarea> 
     </div>
   )
 }
 
+// (e) => { setNote({...note, 'body': e.target.value})}
+//before we were using defaultValue in text area and deleting/removing text was not working properly,
+//with value issue is resolved
