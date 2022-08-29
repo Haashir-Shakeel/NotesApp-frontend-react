@@ -22,6 +22,18 @@ export const NotePage = () => {
         setNote(data)
     }
 
+    const createNote = async () => {
+      fetch(`http://localhost:8000/api/notes/create/`,{
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(note)
+      }
+        )
+        console.log(note)
+    }
+
     const updateNote = async () => {
       fetch(`http://localhost:8000/api/notes/${noteId}/update/`,{
         method: "PUT",
@@ -45,8 +57,14 @@ export const NotePage = () => {
     }
 
     const handleArrowSubmit = () => {
-
-      updateNote()
+      if (noteId !== 'new' && !note.body){
+        deleteNote()
+      }else if(noteId !== 'new'){
+        updateNote()
+      }else if(noteId === 'new' && note !== null){
+        createNote()
+      }
+      
       navigate('/')
     }
 
@@ -59,7 +77,7 @@ export const NotePage = () => {
         {noteId !== 'new'? (
           <button onClick={deleteNote}>Delete</button>
         ): (
-          <button>Done</button>
+          <button onClick={handleArrowSubmit}>Done</button>
         )}
         
       </div>
