@@ -13,6 +13,9 @@ export const NotePage = () => {
     }, [noteId])
 
     const getNote = async () => {
+        if (noteId === 'new') return //solved ValueError at /api/notes/new/, 
+        //stops the request below to be made
+
         const response = await fetch(`http://localhost:8000/api/notes/${noteId}/`)
         const data = await response.json()
         console.log(data)
@@ -52,9 +55,13 @@ export const NotePage = () => {
       <div className='note-header'>
         <h3>
             <ArrowLeft onClick={handleArrowSubmit}/>
-            
         </h3>
-        <button onClick={deleteNote}>Delete</button>
+        {noteId !== 'new'? (
+          <button onClick={deleteNote}>Delete</button>
+        ): (
+          <button>Done</button>
+        )}
+        
       </div>
     <textarea onChange={(e) => { setNote({...note, 'body': e.target.value})}} defaultValue={note?.body}></textarea>
     </div>

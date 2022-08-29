@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { AddButton } from '../components/AddButton'
 import { ListItem } from '../components/ListItem'
 
 export const NotesListPage = () => {
@@ -27,6 +28,7 @@ const getNotes = async () => {
         })
         }
       </div>
+      <AddButton/>
     </div>
   )
 }
