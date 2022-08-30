@@ -23,7 +23,7 @@ export const NotePage = () => {
     }
 
     const createNote = async () => {
-      fetch(`http://localhost:8000/api/notes/create/`,{
+      fetch(`http://localhost:8000/api/notes/`,{
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ export const NotePage = () => {
     }
 
     const updateNote = async () => {
-      fetch(`http://localhost:8000/api/notes/${noteId}/update/`,{
+      fetch(`http://localhost:8000/api/notes/${noteId}/`,{
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ export const NotePage = () => {
     }
 
     const deleteNote = async () => {
-      fetch(`http://localhost:8000/api/notes/${noteId}/delete/`,{
+      fetch(`http://localhost:8000/api/notes/${noteId}/`,{
         method: "DELETE",
         headers: {
           'Content-Type': 'application/json'
