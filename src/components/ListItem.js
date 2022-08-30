@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const getTitle = (note) => {
-  const title = note.body.split('\n')[0]
+  const title = note.body.split('\n')[0] // spliting using next line and getting first of them
   if (title.length > 45){
     return title.slice(0, 45)
   }
@@ -15,6 +15,7 @@ const getTime = (note) => {
 
 const getBody = (note) => {
     const title = getTitle(note)
+    //having const below in content was giving error
     let content = note.body.replaceAll('\n',' ') // replace all new line with space(instead of having new line we will add space )
     content = content.replaceAll(title,'') //replacing title with empty string and having just body
 
